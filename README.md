@@ -1,6 +1,10 @@
 # cookie-stand
 Salmon Cookies
 
+## Lab 06
+1. build basic index.html, style.css, reset.css, concentrate on app.js
+2. 
+
 ## Problem Domain
 Your friend Pat has come up with a business idea by combining two signature Seattle icons: Pat has developed a recipe for a coffee-time confection called Salmon Cookies. These cookies made into the shape of a salmon that has just a hint of fishy goodness.
 
@@ -83,12 +87,55 @@ Here are the starting numbers that you’ll need to build these objects:
 
 Location|	Min / Cust|	Max / Cust|	Avg Cookie / Sale|
 |----|-----|-------|--------|
-||Seattle	| 23	| 65	| 6.3|
+|Seattle	| 23	| 65	| 6.3|
 |Tokyo	    | 3	    | 24    | 1.2|
 |Dubai	    | 11	| 38	| 3.7|
 |Paris	    | 20	| 38	| 2.3|
 |Lima	    | 2	    | 16	| 4.6|
+_______________________
+
 These numbers are simply Pat’s estimates for now, but eventually, once there has been some history collected that provides more accurate numbers, we’ll want **the ability to update these numbers for each location, and to add/remove locations.** But we’ll not build all of that today. 
 
 Make sure to make each location is its own JavaScript object.
 
+## Home Page (stretch goals Lab 06)
+Read below for the requirements of your index.html page.
+
+Note: Everything listed below is a stretch goal for lab 06. All of these requirements will be required for the final submission of the project, so start implementing these early.
+
+In addition to the provided picture of the fish, your index.html file should contain:
+
++ A custom Google font for highlights
+
++ A specified standard sans-serif web font for data (such as Arial, Verdana, or Helvetica)
+
++ A specified standard serif web font for text (such as Georgia, Times, etc.)
+
++ Specified different font colors for all three font usages
+
++ A background color for the default page background (make sure font colors have good contrast and are readable on this background)
+
++ A different background color for elements such boxes and tables (so make sure the font colors contrast against this well, too!)
+
++ Anything else you’d like to add related to style. 
+But remember: simplicity, clarity, and consistency are good things in design.
+Be thoughtful about layout and overall organization of the page.
+
++ Include all of the typical stuff that you’ll find on the home page of a business: **locations, hours, contact information, some text about how awesome the business is, etc.**
+
+ Be creative, and again, think about what is meaningful to a typical end user.
+
+## Developer Style Guide
+In addition to the requirements listed above, please ensure that your project also contains the following according to our style guide:
+
+1. For every lab within this project, you will be creating a new branch for every day. Create a new branch name that follows the following format class##-feature (example: class06-Objects).
+
+2. Within your local version of your repo, add your .gitignore and .eslintrc.json.
+
+3. While working within your non-master branch, conduct regular commits within git.
+
+4. All properties/values and methods should be correctly constructed and given meaningful names.
+
+5. Functions and methods should follow the single-responsibility principle.
+
+6. Use template literals in your JS logic to render the stores as lists on the sales page
