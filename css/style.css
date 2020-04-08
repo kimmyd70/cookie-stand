@@ -1,13 +1,34 @@
 h1{
-    color: salmon;
+    color: rgb(218, 66, 49);
     font-size: 42px;
     margin-bottom: 50px;
+}
+#hero {
+    margin: 50px 0px;
+}
+
+body{
+    background-color: wheat;
+}
+
+nav{
+  
+}
+
+nav ul li{
+    display: inline;
+    border: 2px solid saddlebrown;
+    padding: 10px;
+    color: saddlebrown;
+    background-color:wheat;
+    margin: 25px;
+    border-radius: 12%;
 }
 
 h2{
     color: saddlebrown;
     font-size: 30px;
-    margin-bottom: 50px;
+    margin: 50px;
 }
 
 footer {
