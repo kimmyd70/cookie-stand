@@ -1,0 +1,47 @@
+/* colors: dark salmon: #a7340b; light salmon: #a7350b4f
+background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326
+*/
+
+h1{
+    color: #a7340b;
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+#hero {
+    margin: 50px 0px;
+}
+
+body{
+    background-color: #f5e2be96;
+    color: #343326;
+}
+
+nav{
+  
+}
+
+nav ul li{
+    font-size: 20px;
+    font-weight: 300;
+    display: inline;
+    border: 2px solid #a7340b;
+    padding: 10px;
+    color: #343326;
+    background-color:wheat;
+    margin: 25px;
+    border-radius: 12%;
+}
+
+li:hover{
+    background-color: #a7350b4f;
+}
+
+h2{
+    color: #a7340b;
+    font-size: 30px;
+    margin: 50px;
+}
+
+footer {
+    margin-top: 300px;
+}
