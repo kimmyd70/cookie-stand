@@ -96,7 +96,7 @@ _______________________
 
 These numbers are simply Pat’s estimates for now, but eventually, once there has been some history collected that provides more accurate numbers, we’ll want **the ability to update these numbers for each location, and to add/remove locations.** But we’ll not build all of that today. 
 
-Make sure to make each location is its own JavaScript object.
+### (Lab 06) Make sure to make each location is its own JavaScript object.
 
 ## Home Page (stretch goals Lab 06)
 Read below for the requirements of your index.html page.
