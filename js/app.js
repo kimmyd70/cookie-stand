@@ -1,22 +1,21 @@
 //Global Variables
 var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
   '1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-var simCPHArray = [];
-var total = 0;
+//var simCPHArray = [];
+//var total = 0;
 var locationArray = ['seattle','tokyo','dubai','paris','lima'];
 
 //Object literal for each location
 //CPH = Customer Per Hour
 //CPC  = Cookie Per Customer
 
-//dynamically add/store each loop: rdmCPH = random CPH;
-//hourCPC = hourly (sim based on random); locationTotal = sum (sim cookies over hours)
-
 var seattle = {
   name: 'Seattle',
   minCPH: 23,
   maxCPH: 65,
   avgCPC: 6.3,
+  simCPHArray: [],
+  total: 0,
 
   //generate random number of CPH
   //Objects/Math/random (inclusive)
@@ -87,33 +86,40 @@ var lima = {
   },
 };
 
-//
-// Do all this stuff for each of the values in locationArray (loop?)
-//
 
-//calculate sim cookies per each hour using avgCPC and randomCPH
-//store in simCPHArray = simulated cookies per hour
-function simulateCPH(){
-  return simCPHArray[i]= seattle.randomCPH() * seattle.avgCPC;
-}
+// calculate sim cookies per each hour using avgCPC and randomCPH
+// store in location.simCPHArray = simulated cookies per hour
+// return location.simCPHArray[i]= location.randomCPH() * location.avgCPC;
 
-for (var i = 0; i < hoursArray.length; i ++){
-  simulateCPH();
-  simCPHArray.push();
-  console.log (' sim[i]' + simCPHArray[i]);
+function storeSimCPH (location){
+  for (var i = 0; i < hoursArray.length; i ++){
+    //simulateCPH();
+    location.simCPHArray[i]= location.randomCPH() * location.avgCPC;
+    location.simCPHArray.push();
+  }
+  console.log (' sim[i]' + location.simCPHArray[i]);
+  return location.simCPHArray;
 }
 
 //calculate total cookies for the day
 
-for (i = 0; i < simCPHArray.length; i ++){
-  total = Math.round (total + simCPHArray [i]);
+function totalCookies (location){
+  for (var i = 0; i < location.simCPHArray.length; i ++){
+    location.total = Math.round (total + location.simCPHArray [i]);
+    return location.total;
+  }
 }
 
-// Display via DOM manipulation
-
-console.log ('total' + total);
-console.log(seattle);
-
 //
-// end of stuff
+// Output: Do all functions for each of the values in locationArray; Display each via DOM manipulation
 //
+
+for (var i = 0; i < locationArray.length; i ++ ){
+  storeSimCPH (locationArray[i]);
+  totalCookies (locationArray[i]);
+
+  console.log ('total' + location.total);
+  console.log('location' + location.name);
+  console.log ('sim' + location.simCPHArray);
+}
+
