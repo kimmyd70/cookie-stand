@@ -39,18 +39,12 @@ for (var i = 0; i < hoursArray.length; i ++){
 }
 
 //calculate total cookies for the day
-function totalCookies(index){
-  total = total + simCPHArray[index];
-  return total;
+
+for (i = 0; i < simCPHArray.length; i ++){
+  total = Math.round (total + simCPHArray [i]);
 }
-
-for (i = 0; i <= simCPHArray.length; i ++){
-  totalCookies(i);
-  console.log ('total' + totalCookies());
-}
-
-
 
 // Display via DOM manipulation
 
+console.log ('total' + total);
 console.log(seattle);
