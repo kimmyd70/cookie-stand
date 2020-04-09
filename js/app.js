@@ -132,7 +132,7 @@ function allLocations (anyArray){
 
     console.log ('total' + anyArray[i].total);
     console.log('location' + anyArray[i].name);
-    //console.log ('sim' + anyArray[i].simCPHArray);
+    console.log ('sim' + anyArray[i].simCPHArray);
 
     //console.log ('total' + seattle.total);
     //console.log('location' + seattle.name);
