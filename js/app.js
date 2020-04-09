@@ -87,6 +87,10 @@ var lima = {
   },
 };
 
+//
+// Do all this stuff for each of the values in locationArray (loop?)
+//
+
 //calculate sim cookies per each hour using avgCPC and randomCPH
 //store in simCPHArray = simulated cookies per hour
 function simulateCPH(){
@@ -109,3 +113,7 @@ for (i = 0; i < simCPHArray.length; i ++){
 
 console.log ('total' + total);
 console.log(seattle);
+
+//
+// end of stuff
+//
