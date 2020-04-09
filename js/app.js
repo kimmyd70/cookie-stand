@@ -117,7 +117,7 @@ function totalCookies (location){
 }
 
 //
-// Output: Do all functions for each of the values in locationArray; Display each via DOM manipulation
+// Output: Do all functions for each of the values in locationArray
 //
 
 ///////////////Figure this out
@@ -137,6 +137,8 @@ function allLocations (anyArray){
     //console.log ('total' + seattle.total);
     //console.log('location' + seattle.name);
     //console.log ('sim' + seattle.simCPHArray);
+
+    ///////////////Display each via DOM manipulation///////////
   }
   //return stuff;
 }
