@@ -26,6 +26,66 @@ var seattle = {
   },
 };
 
+var tokyo = {
+  name: 'Tokyo',
+  minCPH: 3,
+  maxCPH: 24,
+  avgCPC: 1.2,
+
+  //generate random number of CPH
+  //Objects/Math/random (inclusive)
+  randomCPH: function(){
+    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
+    console.log('random' + rdmNumber);
+    return rdmNumber;
+  },
+};
+
+var dubai = {
+  name: 'Dubai',
+  minCPH: 11,
+  maxCPH: 38,
+  avgCPC: 3.7,
+
+  //generate random number of CPH
+  //Objects/Math/random (inclusive)
+  randomCPH: function(){
+    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
+    console.log('random' + rdmNumber);
+    return rdmNumber;
+  },
+};
+
+var paris = {
+  name: 'Paris',
+  minCPH: 20,
+  maxCPH: 38,
+  avgCPC: 2.3,
+
+  //generate random number of CPH
+  //Objects/Math/random (inclusive)
+  randomCPH: function(){
+    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
+    console.log('random' + rdmNumber);
+    return rdmNumber;
+  },
+};
+
+var lima = {
+  name: 'Lima',
+  minCPH: 2,
+  maxCPH: 16,
+  avgCPC: 4.6,
+
+  //generate random number of CPH
+  //Objects/Math/random (inclusive)
+  randomCPH: function(){
+    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
+    console.log('random' + rdmNumber);
+    return rdmNumber;
+  },
+};
+
 //calculate sim cookies per each hour using avgCPC and randomCPH
 //store in simCPHArray = simulated cookies per hour
 function simulateCPH(){
