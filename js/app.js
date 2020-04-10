@@ -99,7 +99,7 @@ var lima = {
 
 function storeSimCPH (location){
   for (var i = 0; i < hoursArray.length; i ++){
-    location.simCPHArray[i]= location.randomCPH() * location.avgCPC;
+    location.simCPHArray[i]= Math.round(location.randomCPH() * location.avgCPC);
     console.log (' sim[i]' + location.simCPHArray[i]);
   }
   return location.simCPHArray;
@@ -120,26 +120,20 @@ function allLocations (anyArray){
 
   for (var i = 0; i < anyArray.length; i ++ ){
     storeSimCPH (anyArray[i]);
-    //storeSimCPH (seattle);
-    //totalCookies (seattle);
     totalCookies(anyArray[i]);
 
-    console.log ('total' + anyArray[i].total);
-    console.log('location' + anyArray[i].name);
-    console.log ('sim' + anyArray[i].simCPHArray);
-
-    //console.log ('total' + seattle.total);
-    //console.log('location' + seattle.name);
-    //console.log ('sim' + seattle.simCPHArray);
-
+    //console.log ('total' + anyArray[i].total);
+    //console.log('location' + anyArray[i].name);
+    //console.log ('sim' + anyArray[i].simCPHArray);
   }
 }
 ///////////////Display each via DOM manipulation///////////
 
-//nested: looplocations, loop hours and print two different indices for stores and simCPH
+//nested: loop locations, then loop hours and display
+
 function output (anyArray){
   for (var j = 0; j < anyArray.length; j++){
-    var titleEl = document.createElement('li');
+    var titleEl = document.createElement('p');
     titleEl.textContent = `${anyArray[j].name}`;
     parentEl.appendChild (titleEl);
 

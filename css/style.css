@@ -16,6 +16,12 @@ h2{
     text-align: center;
 }
 
+p{
+    margin: 50px 0px 25px 100px;
+}
+
+
+
 header {
 margin: 100px;
 }
@@ -59,6 +65,15 @@ li:hover{
 
 #salesData {
   margin: 50px;
+}
+
+#salesData ul{
+    margin: 25px 0px;
+}
+
+li{
+    line-height: 1.5;
+    margin-left: 150px;
 }
 
 
