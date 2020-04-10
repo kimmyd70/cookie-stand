@@ -1,4 +1,5 @@
 //Global Variable
+var parentEl = document.getElementById('salesData');
 var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
   '1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
@@ -116,6 +117,7 @@ function totalCookies (location){
 /////////////// Output: Do all functions for each of the values in locationArray
 
 function allLocations (anyArray){
+
   for (var i = 0; i < anyArray.length; i ++ ){
     storeSimCPH (anyArray[i]);
     //storeSimCPH (seattle);
@@ -130,7 +132,25 @@ function allLocations (anyArray){
     //console.log('location' + seattle.name);
     //console.log ('sim' + seattle.simCPHArray);
 
-    ///////////////Display each via DOM manipulation///////////
+  }
+}
+///////////////Display each via DOM manipulation///////////
+
+//nested: looplocations, loop hours and print two different indices for stores and simCPH
+function output (anyArray){
+  for (var j = 0; j < anyArray.length; j++){
+    var titleEl = document.createElement('li');
+    titleEl.textContent = `${anyArray[j].name}`;
+    parentEl.appendChild (titleEl);
+
+    for (var i = 0; i < hoursArray.length; i ++ ){
+      var listEl = document.createElement('li');
+      listEl.textContent = `${hoursArray[i]}: ${anyArray[j].simCPHArray[i]} cookies`;
+      parentEl.appendChild (listEl);
+    }
+    var totalEl = document.createElement('li');
+    totalEl.textContent = `Total:  ${anyArray[j].total}`;
+    parentEl.appendChild (totalEl);
 
   }
 }
@@ -140,5 +160,6 @@ var locationArray = [seattle,tokyo,dubai,paris,lima];
 // Do The Thing
 
 allLocations(locationArray);
+output(locationArray);
 
 ////////////////////////////
