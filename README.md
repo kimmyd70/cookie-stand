@@ -36,15 +36,15 @@ So, in addition to building an application that calculates daily sales projectio
 ## Sales Data
 Within your javascript file (example: app.js), create **separate JS object literals for each shop location** that outputs the following to the sales.html file:
 
-+ Stores the min/max hourly customers, 
++ ### (Lab 06) Stores the min/max hourly customers, 
 
-+ and the average cookies per customer, in object properties
++ ### (Lab 06) and the average cookies per customer, in object properties
 
-+ Uses a method of that object to generate a random number of customers per hour. `Objects/Math/random`
++ ### (Lab 06) Uses a method of that object to generate a random number of customers per hour. `Objects/Math/random`
 
-+ Calculate and store the simulated amounts of cookies purchased for **each hour** at **each location** using average cookies purchased and the random number of customers generated
++ ### (Lab 06) Calculate and store the simulated amounts of cookies purchased for **each hour** at **each location** using average cookies purchased and the random number of customers generated
 
-+ Store the results for each location in a separate array… perhaps as a property of the object representing that location
++ ### (Lab 06) Store the results for each location in a separate array… perhaps as a property of the object representing that location
 
 + Display the values of each array as unordered lists in the browser
 + Calculating the sum of these hourly totals; your output for each location should look like this:
@@ -96,7 +96,7 @@ _______________________
 
 These numbers are simply Pat’s estimates for now, but eventually, once there has been some history collected that provides more accurate numbers, we’ll want **the ability to update these numbers for each location, and to add/remove locations.** But we’ll not build all of that today. 
 
-Make sure to make each location is its own JavaScript object.
+### (Lab 06) Make sure to make each location is its own JavaScript object.
 
 ## Home Page (stretch goals Lab 06)
 Read below for the requirements of your index.html page.
@@ -113,7 +113,7 @@ In addition to the provided picture of the fish, your index.html file should con
 
 + Specified different font colors for all three font usages
 
-+ A background color for the default page background (make sure font colors have good contrast and are readable on this background)
++ ### (Lab 06) A background color for the default page background (make sure font colors have good contrast and are readable on this background)
 
 + A different background color for elements such boxes and tables (so make sure the font colors contrast against this well, too!)
 
@@ -130,7 +130,7 @@ In addition to the requirements listed above, please ensure that your project al
 
 1. For every lab within this project, you will be creating a new branch for every day. Create a new branch name that follows the following format class##-feature (example: class06-Objects).
 
-2. Within your local version of your repo, add your .gitignore and .eslintrc.json.
+2. ### (Lab 06) Within your local version of your repo, add your .gitignore and .eslintrc.json.
 
 3. While working within your non-master branch, conduct regular commits within git.
 

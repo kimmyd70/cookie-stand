@@ -5,10 +5,37 @@ background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326
 h1{
     color: #a7340b;
     font-size: 42px;
-    margin-bottom: 50px;
+    margin: 250px,0px;
+    text-align: center;
 }
+
+h2{
+    color: #a7340b;
+    font-size: 30px;
+    margin: 250px,0px;
+    text-align: center;
+}
+
+p{
+    margin: 50px 0px 25px 100px;
+}
+
+
+
+header {
+margin: 100px;
+}
+
 #hero {
     margin: 50px 0px;
+}
+
+#backButton {
+    float: left;
+}
+
+#salesButton {
+    float: right;
 }
 
 body{
@@ -36,12 +63,20 @@ li:hover{
     background-color: #a7350b4f;
 }
 
-h2{
-    color: #a7340b;
-    font-size: 30px;
-    margin: 50px;
+#salesData {
+  margin: 50px;
 }
 
+#salesData ul{
+    margin: 25px 0px;
+}
+
+li{
+    line-height: 1.5;
+    margin-left: 150px;
+}
+
+
 footer {
-    margin-top: 300px;
+    margin: 300px;
 }

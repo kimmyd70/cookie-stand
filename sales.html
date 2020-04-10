@@ -2,10 +2,12 @@
 <head> 
     <title>Salmon Cookie Sales</title>
     <link rel="stylesheet" type="text/css" href="/css/reset.css"> 
-    <link rel="stylesheet" type="text/css" href="/css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 </head>
 
 <header>
+<a id = "backButton" href="/index.html"> <--- Back to Home  </a>
 <!--Nav through locations -->
 </header>
 
@@ -17,14 +19,19 @@
     display (`Total: $(location.locationTotal) cookies`)
     console.log () //test//-->
 
-  // display as ul in browser (DOM manipulation)
+  <!--display as ul in browser (DOM manipulation)-->
 
-    <p>Sales projections go here from app.js </p>
-    <script src="/js/app.js"></script>
+      <h1>Sales Data</h1>
+      
     </main>
 
+    <ul id="salesData" style ="list-style-type: disc">
+    </ul>
+    
 </body>
 
 <footer>
-&copy @kimmyd70 on GitHub
+    &copy @kimmyd70 on GitHub
 </footer>
+
+<script src="/js/app.js"> Click</script>
