@@ -1,10 +1,7 @@
-//Global Variables
+//Global Variable
 var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
   '1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
-///////////////Figure this out
-var locationArray = [seattle,tokyo,dubai,paris,lima];
-//////////////////
 
 //Object literal for each location
 //CPH = Customer Per Hour
@@ -116,12 +113,7 @@ function totalCookies (location){
   return location.total;
 }
 
-//
-// Output: Do all functions for each of the values in locationArray
-//
-
-///////////////Figure this out
-
+/////////////// Output: Do all functions for each of the values in locationArray
 
 function allLocations (anyArray){
   for (var i = 0; i < anyArray.length; i ++ ){
@@ -139,9 +131,13 @@ function allLocations (anyArray){
     //console.log ('sim' + seattle.simCPHArray);
 
     ///////////////Display each via DOM manipulation///////////
+
   }
-  //return stuff;
 }
+//Global
+var locationArray = [seattle,tokyo,dubai,paris,lima];
+
+// Do The Thing
 
 allLocations(locationArray);
 
