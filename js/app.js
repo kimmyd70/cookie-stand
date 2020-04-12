@@ -203,6 +203,10 @@ CookieStore.prototype.totalCookies = function (){
 function headerRender () {
 //create row element for the location and append
   var rowEl = document.createElement('tr');
+  //append empty cell to beginning
+  var spEl = document.createElement('tr');
+  spEl.textContent = '';
+  rowEl.appendChild(spEl);
 
   //create and fill one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
@@ -213,25 +217,30 @@ function headerRender () {
   // add total to end of row
   var locTotalel = document.createElement('td');
   locTotalel.textContent = `Daily Location Total`
-  rowEl.appendChild(locTotalel)
+  rowEl.appendChild(locTotalel);
   //append row to the table
   parentEl.appendChild (rowEl);
 }
 
 ///Footer render
-CookieStore.prototype.footerRender = function() {
+function footerRender() {
   //create row element for the location and append
   var rowEl = document.createElement('tr');
-  
+  //append empty cell to beginning
+  var spEl = document.createElement('tr');
+  spEl.textContent = '';
+  rowEl.appendChild(spEl);
+
   //create and fill cells one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
-    var cellEl = document.createElement('td');
-    cellEl.textContent = `${hourTotalArray[i]}`;
-    rowEl.appendChild (cellEl);
+    var hrTotalEl = document.createElement('td');
+    hrTotalEl.textContent = 'help';
+    //hrTotalEl.textContent = `${hourTotalArray[i]}`;
+    rowEl.appendChild (hrTotalEl);
   }
   //append row to the table
   parentEl.appendChild (rowEl);
-};
+}
 
 /*     `Total:  ${locationArray[j].dailyTotal}`;
 parentEl.appendChild (totalEl);
@@ -257,5 +266,5 @@ for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].render();
 }
 
-locationArray[i].footerRender();
+footerRender();
 ////////////////////////////
