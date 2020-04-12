@@ -126,12 +126,13 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
   };
 
   this.render = function(){
-
-    //create table parent (or use global??)
-    //var parentEl = document.getElementById('salesData2');
-
     //create row element for the location and append
     var rowEl = document.createElement('tr');
+
+    //create and fill title cell; append to row
+    var titleEl = document.createElement('td');
+    titleEl.textContent = `${this.name}`;
+    rowEl.appendChild (titleEl);
 
     //create and fill cells for each row length of 14 = #hours and append
     for (var i = 0; i < hoursArray.length; i ++ ){
@@ -139,26 +140,15 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
       cellEl.textContent = `${this.simCPHArray[i]}`;
       rowEl.appendChild (cellEl);
     }
+
+    //create and fill total at the end of row; append to row
+    var totalEl = document.createElement('td');
+    totalEl.textContent = `${this.dailyTotal}`;
+    rowEl.appendChild (totalEl);
+
     //append row to the table
     parentEl.appendChild (rowEl);
   };
-  
-  
-  ///Row render
-  /* CookieStore.prototype.render = function(){
-    for (var j = 0; j < locationArray.length; j ++){
-      var titleEl = document.createElement('p');
-      titleEl.textContent = `${locationArray[j].name}`;
-      parentEl.appendChild (titleEl);
-    }
-  };
-  
-  *//* for (var i = 0; i < hoursArray.length; i ++ ){
-    var listEl = document.createElement('li');
-    listEl.textContent = `${hoursArray[i]}: ${locationArray[j].simCPHArray[i]} cookies`;
-    parentEl.appendChild (listEl);
-  }
-  */
 }
 
 //instantiate the objects
@@ -193,7 +183,7 @@ CookieStore.prototype.totalCookies = function (){
 //over one hour [j], loop to add from each this.simCPHArray
 
 
-CookieStore.prototype.simHourTotal = function(){
+/* CookieStore.prototype.simHourTotal = function(){
   var hourTotal = 0;
   for (var j = 0; j < hoursArray.length; j++){
     for (var i = 0; i < locationArray.length; i ++){
@@ -204,47 +194,68 @@ CookieStore.prototype.simHourTotal = function(){
   console.log ('hr totals' + hourTotalArray);
   return this.hourTotalArray;
 };
-
+ */
 
 ///////////////Display each via DOM manipulation///////////
 
 
-///Header render
-CookieStore.prototype.headerRender = function() {
-  for (var i = 0; i < hoursArray.length ; i++){
-    //tabulate each hour at top of column
-    //hoursArray [i]
+///Header render; create row, cells, fill, append
+function headerRender () {
+//create row element for the location and append
+  var rowEl = document.createElement('tr');
+
+  //create and fill one row length 14
+  for (var i = 0; i < hoursArray.length; i ++ ){
+    var cellEl = document.createElement('td');
+    cellEl.textContent = `${hoursArray[i]}`;
+    rowEl.appendChild (cellEl);
   }
-};
+  // add total to end of row
+  var locTotalel = document.createElement('td');
+  locTotalel.textContent = `Daily Location Total`
+  rowEl.appendChild(locTotalel)
+  //append row to the table
+  parentEl.appendChild (rowEl);
+}
 
 ///Footer render
 CookieStore.prototype.footerRender = function() {
-  for (var i = 0; i < hoursArray.length ; i++){
-    //tabulate each  at top of column
-    //hourTotalArray [i]
+  //create row element for the location and append
+  var rowEl = document.createElement('tr');
+  
+  //create and fill cells one row length 14
+  for (var i = 0; i < hoursArray.length; i ++ ){
+    var cellEl = document.createElement('td');
+    cellEl.textContent = `${hourTotalArray[i]}`;
+    rowEl.appendChild (cellEl);
   }
+  //append row to the table
+  parentEl.appendChild (rowEl);
 };
 
 /*     `Total:  ${locationArray[j].dailyTotal}`;
-    parentEl.appendChild (totalEl);
-    
-    for (var j = 0; j < locationArray.length; j ++){
-      var rowEl = document.createElement('td');
-      titleEl.textContent = `${locationArray[j].name}`;
-      parentEl.appendChild (titleEl);
-    }
- */    
+parentEl.appendChild (totalEl);
+
+for (var j = 0; j < locationArray.length; j ++){
+  var rowEl = document.createElement('td');
+  titleEl.textContent = `${locationArray[j].name}`;
+  parentEl.appendChild (titleEl);
+}
+*/    
 
 
 // Do The Thing
 /////////////// Output: Do all functions for each of the values in locationArray
 
+//output header row
+headerRender();
+
 for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].simulateCPH ();
   locationArray[i].totalCookies();
   //locationArray[i].simHourTotal();
-  //locationArray[i].headerRender();
   locationArray[i].render();
-  //locationArray[i].footerRender();
 }
+
+locationArray[i].footerRender();
 ////////////////////////////

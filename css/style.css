@@ -63,7 +63,11 @@ li:hover{
     background-color: #a7350b4f;
 }
 
-#salesData {
+#salesData2{
+    margin: 50px;
+}
+
+/* #salesData {
   margin: 50px;
 }
 
@@ -75,7 +79,7 @@ li{
     line-height: 1.5;
     margin-left: 150px;
 }
-
+ */
 
 footer {
     margin: 300px;
