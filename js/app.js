@@ -95,9 +95,9 @@ var lima = {
 //////////////////////////////////////////////
 
 //Global Variables
-var parentEl = document.getElementById('salesData');
+var parentEl = document.getElementById('salesData2');
 var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
-'1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+  '1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 var locationArray = [];
 var hourTotalArray = [];
 
@@ -125,6 +125,25 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
     return rdmNumber;
   };
 
+  this.render = function(){
+
+    //create table parent (or use global??)
+    //var parentEl = document.getElementById('salesData2');
+
+    //create row element for the location and append
+    var rowEl = document.createElement('tr');
+
+    //create and fill cells for each row length of 14 = #hours and append
+    for (var i = 0; i < hoursArray.length; i ++ ){
+      var cellEl = document.createElement('td');
+      cellEl.textContent = `${this.simCPHArray[i]}`;
+      rowEl.appendChild (cellEl);
+    }
+    //append row to the table
+    parentEl.appendChild (rowEl);
+  };
+  
+  
   ///Row render
   /* CookieStore.prototype.render = function(){
     for (var j = 0; j < locationArray.length; j ++){
@@ -133,15 +152,12 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
       parentEl.appendChild (titleEl);
     }
   };
-
+  
   *//* for (var i = 0; i < hoursArray.length; i ++ ){
     var listEl = document.createElement('li');
     listEl.textContent = `${hoursArray[i]}: ${locationArray[j].simCPHArray[i]} cookies`;
     parentEl.appendChild (listEl);
   }
-  var totalEl = document.createElement('li');
-  totalEl.textContent = `Total:  ${locationArray[j].dailyTotal}`;
-  parentEl.appendChild (totalEl);
   */
 }
 
@@ -180,12 +196,15 @@ CookieStore.prototype.totalCookies = function (){
 CookieStore.prototype.simHourTotal = function(){
   var hourTotal = 0;
   for (var j = 0; j < hoursArray.length; j++){
-    hourTotal = this.simCPHArray[j] + hourTotal;
-    console.log ('hr totals' + hourTotalArray[j]);
-    hourTotalArray[j] = hourTotal;
+    for (var i = 0; i < locationArray.length; i ++){
+      hourTotal = locationArray[i].simCPHArray[j] + hourTotal;
+      hourTotalArray[j] = hourTotal;
+    }
   }
-  return hourTotalArray;
+  console.log ('hr totals' + hourTotalArray);
+  return this.hourTotalArray;
 };
+
 
 ///////////////Display each via DOM manipulation///////////
 
@@ -206,6 +225,15 @@ CookieStore.prototype.footerRender = function() {
   }
 };
 
+/*     `Total:  ${locationArray[j].dailyTotal}`;
+    parentEl.appendChild (totalEl);
+    
+    for (var j = 0; j < locationArray.length; j ++){
+      var rowEl = document.createElement('td');
+      titleEl.textContent = `${locationArray[j].name}`;
+      parentEl.appendChild (titleEl);
+    }
+ */    
 
 
 // Do The Thing
@@ -214,8 +242,9 @@ CookieStore.prototype.footerRender = function() {
 for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].simulateCPH ();
   locationArray[i].totalCookies();
-  locationArray[i].simHourTotal();
+  //locationArray[i].simHourTotal();
   //locationArray[i].headerRender();
+  locationArray[i].render();
   //locationArray[i].footerRender();
 }
 ////////////////////////////
