@@ -125,6 +125,24 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
     return rdmNumber;
   };
 
+  ///Row render
+  /* CookieStore.prototype.render = function(){
+    for (var j = 0; j < locationArray.length; j ++){
+      var titleEl = document.createElement('p');
+      titleEl.textContent = `${locationArray[j].name}`;
+      parentEl.appendChild (titleEl);
+    }
+  };
+
+  *//* for (var i = 0; i < hoursArray.length; i ++ ){
+    var listEl = document.createElement('li');
+    listEl.textContent = `${hoursArray[i]}: ${locationArray[j].simCPHArray[i]} cookies`;
+    parentEl.appendChild (listEl);
+  }
+  var totalEl = document.createElement('li');
+  totalEl.textContent = `Total:  ${locationArray[j].dailyTotal}`;
+  parentEl.appendChild (totalEl);
+  */
 }
 
 //instantiate the objects
@@ -141,7 +159,7 @@ new CookieStore('Lima', 2, 16, 4.6);
 CookieStore.prototype.simulateCPH = function(){
   for (var i = 0; i < hoursArray.length; i ++){
     this.simCPHArray[i]= Math.round(this.randomCPH() * this.avgCPC);
-    //console.log (' sim[i]' + this.simCPHArray[i]);
+    console.log (' sim[i]' + this.simCPHArray[i]);
   }
   return this.simCPHArray;
 };
@@ -157,57 +175,47 @@ CookieStore.prototype.totalCookies = function (){
 //calculates total cookies per hour from all stores
 
 //over one hour [j], loop to add from each this.simCPHArray
+
+
 CookieStore.prototype.simHourTotal = function(){
+  var hourTotal = 0;
   for (var j = 0; j < hoursArray.length; j++){
-    hourTotalArray [j] = this.simCPHArray [j] + hourTotalArray[j];
+    hourTotal = this.simCPHArray[j] + hourTotal;
     console.log ('hr totals' + hourTotalArray[j]);
+    hourTotalArray[j] = hourTotal;
   }
   return hourTotalArray;
-
 };
 
-/////////////// Output: Do all functions for each of the values in locationArray
-
-CookieStore.prototype.allLocations = function (){
-
-  for (var i = 0; i < locationArray.length; i ++ ){
-    locationArray[i].simulateCPH ();
-    locationArray[i].totalCookies();
-    locationArray[i].simHourTotal();
-
-  }
-};
 ///////////////Display each via DOM manipulation///////////
 
-//nested: loop locations, then loop hours and display
 
-CookieStore.prototype.render = function (anyArray){
-  for (var j = 0; j < anyArray.length; j++){
-    var titleEl = document.createElement('p');
-    titleEl.textContent = `${anyArray[j].name}`;
-    parentEl.appendChild (titleEl);
-
-    for (var i = 0; i < hoursArray.length; i ++ ){
-      var listEl = document.createElement('li');
-      listEl.textContent = `${hoursArray[i]}: ${anyArray[j].simCPHArray[i]} cookies`;
-      parentEl.appendChild (listEl);
-    }
-    var totalEl = document.createElement('li');
-    totalEl.textContent = `Total:  ${anyArray[j].total}`;
-    parentEl.appendChild (totalEl);
-
+///Header render
+CookieStore.prototype.headerRender = function() {
+  for (var i = 0; i < hoursArray.length ; i++){
+    //tabulate each hour at top of column
+    //hoursArray [i]
   }
 };
 
+///Footer render
+CookieStore.prototype.footerRender = function() {
+  for (var i = 0; i < hoursArray.length ; i++){
+    //tabulate each  at top of column
+    //hourTotalArray [i]
+  }
+};
+
+
+
 // Do The Thing
+/////////////// Output: Do all functions for each of the values in locationArray
 
-console.log(locationArray[1].simulateCPH());
-console.log(locationArray[1].totalCookies());
-
-console.log (locationArray[1].simHourTotal());
-
-
-//locationArray[i].allLocations();
-//CookieStore.prototype.render(locationArray);
-
+for (var i = 0; i < locationArray.length; i ++ ){
+  locationArray[i].simulateCPH ();
+  locationArray[i].totalCookies();
+  locationArray[i].simHourTotal();
+  //locationArray[i].headerRender();
+  //locationArray[i].footerRender();
+}
 ////////////////////////////
