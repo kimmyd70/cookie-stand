@@ -206,6 +206,8 @@ function headerRender () {
   //append empty cell to beginning
   var spEl = document.createElement('tr');
   spEl.textContent = '';
+  //spEl.textContent = 'BLANK';
+
   rowEl.appendChild(spEl);
 
   //create and fill one row length 14
@@ -238,6 +240,13 @@ function footerRender() {
     //hrTotalEl.textContent = `${hourTotalArray[i]}`;
     rowEl.appendChild (hrTotalEl);
   }
+
+  //append empty cell to end
+  var spEl = document.createElement('tr');
+  spEl.textContent = '';
+  //spEl.textContent = 'BLANK';
+  rowEl.appendChild(spEl);
+
   //append row to the table
   parentEl.appendChild (rowEl);
 }
