@@ -3,7 +3,17 @@ Salmon Cookies
 
 ## Lab 06
 1. build basic index.html, style.css, reset.css, concentrate on app.js
-2. 
+
+## Lab 07
+2. build objects with constructors
+
+3. calculate daily total for each location and show at location row end
+
+4. format output data into a table 
+    - each location uses a separate method (rename: render)
+    - header and footer created in stand-alone (prototype) functions
+    - put in CSS proper spacing and gridlines (css reset wipes them out)
+
 
 ## Problem Domain
 Your friend Pat has come up with a business idea by combining two signature Seattle icons: Pat has developed a recipe for a coffee-time confection called Salmon Cookies. These cookies made into the shape of a salmon that has just a hint of fishy goodness.
