@@ -1,21 +1,25 @@
-//Global Variable
-var parentEl = document.getElementById('salesData');
-var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
-  '1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+/* //Lab 07
+X-build objects with constructors
+
+-calculate daily total for each location and show at location row end
+
+format output data into a table
+    - each location uses a separate method (rename: render)
+    - header and footer created in stand-alone (prototype) functions
+    - put in CSS proper spacing and gridlines (css reset wipes them out)
+ */
+
+/////////////////////////////////////////////
 
 
-//Object literal for each location
-//CPH = Customer Per Hour
-//CPC  = Cookie Per Customer
-
-var seattle = {
+/*var seattle = {
   name: 'Seattle',
   minCPH: 23,
   maxCPH: 65,
   avgCPC: 6.3,
   simCPHArray: [],
   total: 0,
-
+  
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -32,7 +36,7 @@ var tokyo = {
   avgCPC: 1.2,
   simCPHArray: [],
   total: 0,
-
+  
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -49,7 +53,7 @@ var dubai = {
   avgCPC: 3.7,
   simCPHArray: [],
   total: 0,
-
+  
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -66,7 +70,7 @@ var paris = {
   avgCPC: 2.3,
   simCPHArray: [],
   total: 0,
-
+  
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -83,55 +87,101 @@ var lima = {
   avgCPC: 4.6,
   simCPHArray: [],
   total: 0,
+  
+  
+};
+*/
+
+//////////////////////////////////////////////
+
+//Global Variables
+var parentEl = document.getElementById('salesData');
+var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
+'1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+var locationArray = [];
+var hourTotalArray = [];
+
+//Object literal replaced with constructor
+//CPH = Customer Per Hour
+//CPC  = Cookie Per Customer
+
+function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal = 0){
+
+  this.name = name;
+  this.minCPH = minCPH;
+  this.maxCPH = maxCPH;
+  this.avgCPC = avgCPC;
+  this.simCPHArray = simCPHArray;
+  this.dailyTotal = dailyTotal;
+
+  locationArray.push(this);
 
   //generate random number of CPH
   //Objects/Math/random (inclusive)
-  randomCPH: function(){
+
+  this.randomCPH = function(){
     var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
-    console.log('random' + rdmNumber);
+    //console.log('random' + rdmNumber);
     return rdmNumber;
-  },
-};
+  };
+
+}
+
+//instantiate the objects
+
+new CookieStore('Seattle', 23, 65, 6.3);
+new CookieStore('Tokyo', 3, 24, 1.2);
+new CookieStore('Dubai', 11, 38, 3.7);
+new CookieStore('Paris', 20, 38, 2.3);
+new CookieStore('Lima', 2, 16, 4.6);
 
 
 // calculate sim cookies per each hour using avgCPC and randomCPH
 // store in location.simCPHArray = simulated cookies per hour
-
-function storeSimCPH (location){
+CookieStore.prototype.simulateCPH = function(){
   for (var i = 0; i < hoursArray.length; i ++){
-    location.simCPHArray[i]= Math.round(location.randomCPH() * location.avgCPC);
-    console.log (' sim[i]' + location.simCPHArray[i]);
+    this.simCPHArray[i]= Math.round(this.randomCPH() * this.avgCPC);
+    //console.log (' sim[i]' + this.simCPHArray[i]);
   }
-  return location.simCPHArray;
-}
+  return this.simCPHArray;
+};
 
-//calculate total cookies for the day
-
-function totalCookies (location){
+//calculate total cookies for the day per store
+CookieStore.prototype.totalCookies = function (){
   for (var i = 0; i < hoursArray.length; i ++){
-    location.total = Math.round (location.total + location.simCPHArray[i]);
+    this.dailyTotal = this.dailyTotal + this.simCPHArray[i];
   }
-  return location.total;
-}
+  return this.dailyTotal;
+};
+
+//calculates total cookies per hour from all stores
+
+//over one hour [j], loop to add from each this.simCPHArray
+CookieStore.prototype.simHourTotal = function(){
+  for (var j = 0; j < hoursArray.length; j++){
+    hourTotalArray [j] = this.simCPHArray [j] + hourTotalArray[j];
+    console.log ('hr totals' + hourTotalArray[j]);
+  }
+  return hourTotalArray;
+
+};
 
 /////////////// Output: Do all functions for each of the values in locationArray
 
-function allLocations (anyArray){
+CookieStore.prototype.allLocations = function (){
 
-  for (var i = 0; i < anyArray.length; i ++ ){
-    storeSimCPH (anyArray[i]);
-    totalCookies(anyArray[i]);
+  for (var i = 0; i < locationArray.length; i ++ ){
+    locationArray[i].simulateCPH ();
+    locationArray[i].totalCookies();
+    locationArray[i].simHourTotal();
 
-    //console.log ('total' + anyArray[i].total);
-    //console.log('location' + anyArray[i].name);
-    //console.log ('sim' + anyArray[i].simCPHArray);
   }
-}
+};
 ///////////////Display each via DOM manipulation///////////
 
 //nested: loop locations, then loop hours and display
 
-function output (anyArray){
+CookieStore.prototype.render = function (anyArray){
   for (var j = 0; j < anyArray.length; j++){
     var titleEl = document.createElement('p');
     titleEl.textContent = `${anyArray[j].name}`;
@@ -147,13 +197,17 @@ function output (anyArray){
     parentEl.appendChild (totalEl);
 
   }
-}
-//Global
-var locationArray = [seattle,tokyo,dubai,paris,lima];
+};
 
 // Do The Thing
 
-allLocations(locationArray);
-output(locationArray);
+console.log(locationArray[1].simulateCPH());
+console.log(locationArray[1].totalCookies());
+
+console.log (locationArray[1].simHourTotal());
+
+
+//locationArray[i].allLocations();
+//CookieStore.prototype.render(locationArray);
 
 ////////////////////////////
