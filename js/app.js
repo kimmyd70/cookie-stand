@@ -19,7 +19,7 @@ format output data into a table
   avgCPC: 6.3,
   simCPHArray: [],
   total: 0,
-  
+
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -53,7 +53,7 @@ var dubai = {
   avgCPC: 3.7,
   simCPHArray: [],
   total: 0,
-  
+
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -70,7 +70,7 @@ var paris = {
   avgCPC: 2.3,
   simCPHArray: [],
   total: 0,
-  
+
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -87,8 +87,8 @@ var lima = {
   avgCPC: 4.6,
   simCPHArray: [],
   total: 0,
-  
-  
+
+
 };
 */
 
@@ -183,18 +183,18 @@ CookieStore.prototype.totalCookies = function (){
 //over one hour [j], loop to add from each this.simCPHArray
 
 
-/* CookieStore.prototype.simHourTotal = function(){
+function simHourTotal(locationArray){
   var hourTotal = 0;
   for (var j = 0; j < hoursArray.length; j++){
     for (var i = 0; i < locationArray.length; i ++){
       hourTotal = locationArray[i].simCPHArray[j] + hourTotal;
       hourTotalArray[j] = hourTotal;
     }
+    hourTotal = 0;
   }
-  console.log ('hr totals' + hourTotalArray);
+  //console.log ('hr totals' + hourTotalArray);
   return this.hourTotalArray;
-};
- */
+}
 
 ///////////////Display each via DOM manipulation///////////
 
@@ -204,10 +204,9 @@ function headerRender () {
 //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append empty cell to beginning
-  var spEl = document.createElement('tr');
+  var spEl = document.createElement('td');
   spEl.textContent = '';
   //spEl.textContent = 'BLANK';
-
   rowEl.appendChild(spEl);
 
   //create and fill one row length 14
@@ -218,7 +217,7 @@ function headerRender () {
   }
   // add total to end of row
   var locTotalel = document.createElement('td');
-  locTotalel.textContent = `Daily Location Total`
+  locTotalel.textContent = 'Daily Location Total';
   rowEl.appendChild(locTotalel);
   //append row to the table
   parentEl.appendChild (rowEl);
@@ -229,20 +228,19 @@ function footerRender() {
   //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append empty cell to beginning
-  var spEl = document.createElement('tr');
+  var spEl = document.createElement('td');
   spEl.textContent = '';
+  //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
 
   //create and fill cells one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
     var hrTotalEl = document.createElement('td');
-    hrTotalEl.textContent = 'help';
-    //hrTotalEl.textContent = `${hourTotalArray[i]}`;
+    //hrTotalEl.textContent = 'help';
+    hrTotalEl.textContent = `${hourTotalArray[i]}`;
     rowEl.appendChild (hrTotalEl);
   }
 
-  //append empty cell to end
-  var spEl = document.createElement('tr');
   spEl.textContent = '';
   //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
@@ -259,7 +257,7 @@ for (var j = 0; j < locationArray.length; j ++){
   titleEl.textContent = `${locationArray[j].name}`;
   parentEl.appendChild (titleEl);
 }
-*/    
+*/
 
 
 // Do The Thing
@@ -271,9 +269,9 @@ headerRender();
 for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].simulateCPH ();
   locationArray[i].totalCookies();
-  //locationArray[i].simHourTotal();
   locationArray[i].render();
+  //locationArray[i].simHourTotal();
 }
-
+simHourTotal(locationArray);
 footerRender();
 ////////////////////////////
