@@ -96,8 +96,8 @@ var lima = {
 
 //Global Variables
 var parentEl = document.getElementById('salesData2');
-var hoursArray = ['6am','7am','8am','9am','10am','11am','12pm',
-  '1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+var hoursArray = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00pm',
+  '1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 var locationArray = [];
 var hourTotalArray = [];
 
@@ -203,9 +203,9 @@ function simHourTotal(locationArray){
 function headerRender () {
 //create row element for the location and append
   var rowEl = document.createElement('tr');
-  //append empty cell to beginning
+  //append total cell to beginning
   var spEl = document.createElement('td');
-  spEl.textContent = '';
+  //spEl.textContent = '';
   //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
 
@@ -228,10 +228,10 @@ function footerRender() {
   //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append empty cell to beginning
-  var spEl = document.createElement('td');
-  spEl.textContent = '';
-  //spEl.textContent = 'BLANK';
-  rowEl.appendChild(spEl);
+  var spaceEl = document.createElement('td');
+  //spaceEl.textContent = '';
+  spaceEl.textContent = 'Totals';
+  rowEl.appendChild(spaceEl);
 
   //create and fill cells one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
@@ -241,24 +241,14 @@ function footerRender() {
     rowEl.appendChild (hrTotalEl);
   }
 
-  spEl.textContent = '';
-  //spEl.textContent = 'BLANK';
-  rowEl.appendChild(spEl);
+  //append blank to end of row
+  var locTotalel = document.createElement('td');
+  locTotalel.textContent = '';
+  rowEl.appendChild(locTotalel);
 
   //append row to the table
   parentEl.appendChild (rowEl);
 }
-
-/*     `Total:  ${locationArray[j].dailyTotal}`;
-parentEl.appendChild (totalEl);
-
-for (var j = 0; j < locationArray.length; j ++){
-  var rowEl = document.createElement('td');
-  titleEl.textContent = `${locationArray[j].name}`;
-  parentEl.appendChild (titleEl);
-}
-*/
-
 
 // Do The Thing
 /////////////// Output: Do all functions for each of the values in locationArray
@@ -270,7 +260,6 @@ for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].simulateCPH ();
   locationArray[i].totalCookies();
   locationArray[i].render();
-  //locationArray[i].simHourTotal();
 }
 simHourTotal(locationArray);
 footerRender();
