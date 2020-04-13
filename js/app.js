@@ -229,7 +229,7 @@ function footerRender() {
   //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append empty cell to beginning
-  var spEl = document.createElement('tr');
+  var spEl = document.createElement('td');
   spEl.textContent = '';
   rowEl.appendChild(spEl);
 
@@ -242,24 +242,14 @@ function footerRender() {
   }
 
   //append empty cell to end
-  var spEl = document.createElement('tr');
-  spEl.textContent = '';
+  var spEl2 = document.createElement('tr');
+  spEl2.textContent = '';
   //spEl.textContent = 'BLANK';
-  rowEl.appendChild(spEl);
+  rowEl.appendChild(spEl2);
 
   //append row to the table
   parentEl.appendChild (rowEl);
 }
-
-/*     `Total:  ${locationArray[j].dailyTotal}`;
-parentEl.appendChild (totalEl);
-
-for (var j = 0; j < locationArray.length; j ++){
-  var rowEl = document.createElement('td');
-  titleEl.textContent = `${locationArray[j].name}`;
-  parentEl.appendChild (titleEl);
-}
-*/    
 
 
 // Do The Thing
