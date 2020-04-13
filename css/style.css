@@ -5,7 +5,7 @@ background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326
 h1{
     color: #a7340b;
     font-size: 42px;
-    margin: 50px 0px;
+    margin: 0px 0px;
     text-align: center;
 }
 
@@ -15,24 +15,30 @@ h2{
     text-align: center;
 }
 
-p{
+/* p{
     margin: 50px 0px 25px 100px;
 }
-
-
+ */
+a {
+    text-decoration: none;
+    color: #a7340b;
+    font-weight: bold;
+    font-size: 12px;
+}
 
 header {
     display: inline-flex;
 }
 
 #hero {
-    margin: 20px 50px;
-    width: 300px;
+    margin: 20px 20px;
+    width: 280px;
     
 }
 
 #backButton {
-    margin-top: 50px;
+    margin: 20px 20px 0px;
+
 }
 
 #salesButton {
@@ -46,7 +52,7 @@ body{
 
 nav{
     display: inline-flex;
-    margin: 80px;
+    margin: 100px;
 }
 
 nav ul li{
@@ -100,5 +106,5 @@ li{
  */
 
 footer {
-    margin: 300px 0px 300px 50px;
+    margin: 300px 20px 0px;
 }
