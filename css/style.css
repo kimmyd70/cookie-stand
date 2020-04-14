@@ -13,12 +13,13 @@ h2{
     color: #a7340b;
     font-size: 30px;
     text-align: center;
+    margin-top: 50px;
 }
 
-/* p{
+ p{
     margin: 50px 0px 25px 100px;
 }
- */
+ 
 a {
     
 }
@@ -60,7 +61,7 @@ nav{
 }
 
 nav ul li {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 300;
     display: inline;
     border: 2px solid #a7340b;
@@ -74,6 +75,29 @@ nav ul li {
  nav ul li:hover{
     background-color: #a7350b4f;
 }
+
+#main-copy{
+    margin:  50px 100px;
+}
+
+#italic{
+    font-style: italic;
+    color: #a7340b;
+}
+
+#bold{
+    font-style: bolder;
+    color: #a7340b;
+}
+
+
+#hours-contact{
+    display: inline-flex;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+
 
 #salesData2{
     margin: 80px;
@@ -118,11 +142,12 @@ li{
     align-items: center;
     padding: 30px 200px;
     line-height: 1.5;
+    font-weight: bold;
 
  }
 
  footer > img {
-     max-height: 100px;
+     max-height: 75px;
      padding: 30px;
  }
 
