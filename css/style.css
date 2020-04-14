@@ -20,11 +20,10 @@ h2{
 }
  */
 a {
-    text-decoration: none;
-    color: #a7340b;
-    font-weight: bold;
-    font-size: 12px;
+    
 }
+
+
 
 header {
     display: inline-flex;
@@ -41,8 +40,9 @@ header {
 
 }
 
-#salesButton {
-    float: right;
+#salesButton, #backButton {
+    text-decoration: none;
+    color: #a7340b;
 }
 
 body{
@@ -55,7 +55,7 @@ nav{
     margin: 100px;
 }
 
-nav ul li{
+nav ul li {
     font-size: 20px;
     font-weight: 300;
     display: inline;
@@ -109,6 +109,30 @@ li{
 }
  */
 
+ #footer-list{
+    align-content: space-between;
+    align-items: center;
+    padding: 30px 200px;
+    line-height: 1.5;
+
+ }
+
+ footer > img {
+     max-height: 100px;
+     padding: 30px;
+ }
+
+ #footer-copy {
+     font-size: 15px;
+     padding: 75px 20px;
+ }
+
 footer {
-    margin: 300px 20px 0px;
+    display: inline-flex;
+    align-content: space-around;
+    justify-items: center;
+    margin-top: 300px;
+    background-color: wheat;
+    border: 1px solid #a7340b;
+    width: 100%;
 }
