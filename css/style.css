@@ -83,6 +83,10 @@ nav ul li{
     font-weight: bolder;
 }
 
+#salesData2 tr:first-child > td {
+    border: none;
+}
+
 #salesData2 td {
     border: 1px solid lightgray;
     padding: 10px;

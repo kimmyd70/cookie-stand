@@ -14,6 +14,33 @@ Salmon Cookies
     - header and footer created in stand-alone (prototype) functions
     - put in CSS proper spacing and gridlines (css reset wipes them out)
 
+## Lab 08
+
+5. finish styling
+    - "just a hint of fishy goodness"
+    - Pat is requesting your assistance in the design of the documents, color scheme, fonts, and any additional images for the public facing site
+    - colorful, eye-catching, readable, useful, and informative
+    - A custom Google font for highlights
+
+    - A specified standard sans-serif web font for data (such as Arial, Verdana, or Helvetica)
+
+    - A specified standard serif web font for text (such as Georgia, Times, etc.)
+
+    - Specified different font colors for all three font usages
+
+    - ### (Lab 06) A background color for the default page background (make sure font colors have good contrast and are readable on this background)
+
+    - A different background color for elements such boxes and tables (so make sure the font colors contrast against this well, too!)
+
+    - Anything else you’d like to add related to style. 
+
+    - But remember: simplicity, clarity, and consistency are good things in design.
+    - Be thoughtful about layout and overall organization of the page.
+
+    - Include all of the typical stuff that you’ll find on the home page of a business: **locations, hours, contact information, some text about how awesome the business is, etc.**
+
+
+
 
 ## Problem Domain
 Your friend Pat has come up with a business idea by combining two signature Seattle icons: Pat has developed a recipe for a coffee-time confection called Salmon Cookies. These cookies made into the shape of a salmon that has just a hint of fishy goodness.
@@ -56,8 +83,8 @@ Within your javascript file (example: app.js), create **separate JS object liter
 
 + ### (Lab 06) Store the results for each location in a separate array… perhaps as a property of the object representing that location
 
-+ Display the values of each array as unordered lists in the browser
-+ Calculating the sum of these hourly totals; your output for each location should look like this:
++ ### (lab 06) Display the values of each array as unordered lists in the browser
++ ### Lab (07)  Calculating the sum of these hourly totals; your output for each location should look like this:
 
 Seattle
 
