@@ -19,7 +19,7 @@ h2{
  #hours-contact{
     display: inline-flex;
     align-content: space-between;
-    margin: 50px;
+    margin: 100px;
 
 }
  
@@ -52,9 +52,8 @@ header {
 
 }
 
-#salesButton, #backButton {
-    text-decoration: none;
-    color: #a7340b;
+#salesButton img, #backButton img{
+    max-width: 50px;
 }
 
 #salesButton{
@@ -99,25 +98,27 @@ nav ul li {
 #bold{
     font-style: bolder;
     color: #a7340b;
+    font-weight: bolder;
 }
 
 
 #hours-contact{
     
-    margin-left: 130px;
+    margin-left: 200px;
+
 }
 
 #hours-contact img{
     width: 500px;
-   padding: 50px 120px;
+   align-content: center;
 }
 
 #hours{
-    padding: 200px 40px 0px 0px;
+    padding: 100px 120px 0px 0px;
 }
 
 #contact{
-    padding: 200px 0px 0px 40px;
+    padding: 100px 0px 0px 100px;
    
 }
 
@@ -178,6 +179,9 @@ li{
      font-size: 15px;
      padding: 75px 20px;
  }
+#social{
+    max-height: 75px;
+}
 
 footer {
     display: inline-flex;
