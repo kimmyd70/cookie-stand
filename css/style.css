@@ -28,6 +28,10 @@ p {
     
 }
 
+b{
+    font-weight: bolder;
+}
+
 li{
     line-height: 1.5;
 }
@@ -39,7 +43,7 @@ header {
 
 #hero {
     margin: 20px 20px;
-    width: 175px;
+    max-width: 200px;
     
 }
 
@@ -100,14 +104,22 @@ nav ul li {
 
 #hours-contact{
     
-    margin-left: 175px;
+    margin-left: 130px;
 }
 
 #hours-contact img{
-    width: 300px;
-    margin: 0px 100;
+    width: 500px;
+   padding: 50px 120px;
 }
 
+#hours{
+    padding: 200px 40px 0px 0px;
+}
+
+#contact{
+    padding: 200px 0px 0px 40px;
+   
+}
 
 
 #salesData2{
@@ -171,7 +183,7 @@ footer {
     display: inline-flex;
     align-content: space-around;
     justify-items: center;
-    margin-top: 300px;
+    margin-top: 100px;
     background-color: wheat;
     border: 1px solid #a7340b;
     width: 100%;
