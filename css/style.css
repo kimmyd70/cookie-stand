@@ -130,8 +130,18 @@ nav ul li {
 }
 
 #products {
-    display: inline-flex;
-    margin-left: 200px;
+    display: inline-flex;;
+    margin: 0px 80px;
+}
+
+#products > figure{
+    height: 400px;
+    margin: 50px 
+}
+
+figcaption{
+    line-height: 1.5;
+    padding-left: 5%;
 }
 
 
@@ -197,8 +207,8 @@ li{
  }
 
  footer > img {
-     max-height: 150px;
-     padding: 30px;
+    max-height: 75px;
+    padding: 30px;
  }
 
  #footer-copy {
