@@ -5,7 +5,7 @@ background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326
 h1{
     color: #a7340b;
     font-size: 42px;
-    margin: 0px 0px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -41,10 +41,17 @@ header {
     display: inline-flex;
 }
 
-#hero {
-    margin: 20px 20px;
-    max-width: 200px;
+#hero{
+    max-height: 150px;
+    margin: 45px 20px 0px;
     
+}
+
+#family {
+    max-width: 250px;
+    border: 2px solid #a7340b;
+    border-radius: 12%;
+    margin-left: 20px;
 }
 
 #backButton {
@@ -67,7 +74,7 @@ body{
 
 nav{
     display: inline-flex;
-    margin: 100px;
+    margin: 50px 0px 0px ;
 }
 
 nav ul li {
@@ -78,7 +85,7 @@ nav ul li {
     padding: 10px;
     color: #343326;
     background-color:wheat;
-    margin: 25px;
+    margin: 20px;
     border-radius: 12%;
 }
 
@@ -87,7 +94,7 @@ nav ul li {
 }
 
 #main-copy{
-    margin:  50px 250px;
+    margin:  2px 250px;
 }
 
 #italic{
@@ -102,7 +109,7 @@ nav ul li {
 }
 
 
-#hours-contact{
+#hours-contact {
     
     margin-left: 200px;
 
@@ -120,6 +127,11 @@ nav ul li {
 #contact{
     padding: 100px 0px 0px 100px;
    
+}
+
+#products {
+    display: inline-flex;
+    margin-left: 200px;
 }
 
 
@@ -144,6 +156,20 @@ nav ul li {
     padding: 10px;
     text-align: center;
 
+}
+
+#salesMain {
+    display: inline-flex;
+    align-content: space-between;
+    justify-items: center;
+    margin: 100px;
+    background-color: wheat;
+    border: 1px solid #a7340b;
+    width: 80%;
+}
+
+#salesMain > image{
+    max-height: 60 px;
 }
 
 
@@ -171,7 +197,7 @@ li{
  }
 
  footer > img {
-     max-height: 75px;
+     max-height: 150px;
      padding: 30px;
  }
 
