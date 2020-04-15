@@ -13,7 +13,7 @@ h2{
     color: #a7340b;
     font-size: 30px;
     text-align: center;
-    margin-top: 50px;
+    padding: 60px 50px;
 }
 
  #hours-contact{
@@ -55,7 +55,7 @@ header {
 }
 
 #backButton {
-    margin: 20px 20px 0px;
+    margin: 0px 20px 0px;
 
 }
 
@@ -175,11 +175,12 @@ figcaption{
     margin: 100px;
     background-color: wheat;
     border: 1px solid #a7340b;
-    width: 80%;
+    width: 85%;
 }
 
 #salesMain > image{
     max-height: 60 px;
+    padding: 0px 50px;
 }
 
 
