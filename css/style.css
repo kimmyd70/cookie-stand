@@ -1,30 +1,36 @@
 /* colors: dark salmon: #a7340b; light salmon: #a7350b4f
-background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326
-*/
+background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326;
+san-serif font-family (data): Ariel, Helvetica ;
+serif font-family (text): Georgia, 'Times New Roman', Times, serif;
+custom google font-family (highlights: 'Courgette', cursive;*/
 
 h1{
     color: #a7340b;
-    font-size: 42px;
-    margin: 0px 0px;
+    font-size: 50px;
+    margin-bottom: 50px;
     text-align: center;
+    font-family: 'Courgette', cursive;
 }
 
 h2{
     color: #a7340b;
-    font-size: 30px;
+    font-size: 42px;
     text-align: center;
-    margin-top: 50px;
+    padding: 60px 50px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
- #hours-contact{
+    
+#hours-contact{
     display: inline-flex;
     align-content: space-between;
     margin: 100px;
-
+    
 }
- 
+
 p {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+    line-height: 1.5;
     
 }
 
@@ -41,15 +47,22 @@ header {
     display: inline-flex;
 }
 
-#hero {
-    margin: 20px 20px;
-    max-width: 200px;
+#hero{
+    max-height: 150px;
+    margin: 45px 20px 0px;
     
 }
 
-#backButton {
-    margin: 20px 20px 0px;
+#family {
+    max-width: 250px;
+    border: 2px solid #a7340b;
+    border-radius: 12%;
+    margin-left: 20px;
+}
 
+#backButton {
+    margin: 0px 20px 0px;
+    
 }
 
 #salesButton img, #backButton img{
@@ -61,13 +74,14 @@ header {
 }
 
 body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #f5e2be96;
     color: #343326;
 }
 
 nav{
     display: inline-flex;
-    margin: 100px;
+    margin: 50px 0px 0px ;
 }
 
 nav ul li {
@@ -78,16 +92,16 @@ nav ul li {
     padding: 10px;
     color: #343326;
     background-color:wheat;
-    margin: 25px;
+    margin: 20px;
     border-radius: 12%;
 }
 
- nav ul li:hover{
+nav ul li:hover{
     background-color: #a7350b4f;
 }
 
 #main-copy{
-    margin:  50px 250px;
+    margin:  2px 225px;
 }
 
 #italic{
@@ -99,44 +113,66 @@ nav ul li {
     font-style: bolder;
     color: #a7340b;
     font-weight: bolder;
+    text-decoration: underline;
 }
 
 
-#hours-contact{
+#hours-contact {
     
-    margin-left: 200px;
-
+    margin-left: 175px;
+    
 }
 
 #hours-contact img{
-    width: 500px;
-   align-content: center;
+    width: 450px;
+    align-content: center;
 }
 
 #hours{
-    padding: 100px 120px 0px 0px;
+    padding: 80px 100px 0px 0px;
 }
 
 #contact{
-    padding: 100px 0px 0px 100px;
-   
+    padding: 80px 0px 0px 100px;
+    
+}
+    
+#products {
+    display: inline-flex;;
+    margin: 0px 80px;
+}
+
+#products > figure{
+    height: 400px;
+    margin: 50px 
+}
+
+figcaption{
+    line-height: 1.5;
+    font-size: 15px;
+    margin-left: 2%;
 }
 
 
 #salesData2{
+    font-family: Arial, Helvetica, sans-serif;
     margin: 80px;
     width: auto;
 
 }
 
 #salesData2 tr:first-child {
-    height: 50px;
-    border: none;
-    font-weight: bolder;
+height: 50px;
+border: none;
+font-weight: bolder;
 }
 
 #salesData2 tr:first-child > td {
     border: none;
+}
+
+#salesData2 tr:nth-child(2n) {
+    background-color: wheat;
 }
 
 #salesData2 td {
@@ -144,6 +180,21 @@ nav ul li {
     padding: 10px;
     text-align: center;
 
+}
+
+#salesMain {
+    display: inline-flex;
+    align-content: space-between;
+    justify-items: center;
+    margin: 100px;
+    background-color: wheat;
+    border: 1px solid #a7340b;
+    width: 85%;
+}
+
+#salesMain > image{
+    max-height: 60 px;
+    padding: 0px 50px;
 }
 
 
@@ -171,8 +222,8 @@ li{
  }
 
  footer > img {
-     max-height: 75px;
-     padding: 30px;
+    max-height: 75px;
+    padding: 30px;
  }
 
  #footer-copy {
@@ -187,7 +238,7 @@ footer {
     display: inline-flex;
     align-content: space-around;
     justify-items: center;
-    margin-top: 100px;
+    margin-top: 70px;
     background-color: wheat;
     border: 1px solid #a7340b;
     width: 100%;
