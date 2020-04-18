@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<!---------Lab 09: Form at Line 38; Line 161 in .js has handler-->
+
+
 <head> 
     <title>Salmon Cookie Sales</title>
     <link rel="stylesheet" type="text/css" href="./css/reset.css"> 
@@ -32,6 +36,33 @@
     <table id = "salesData2">
         
     </table>
+
+    <!--Help Pat add new locations to his sales data-->
+
+    <legend> Add a New Location</legend>
+        <form id="addLocation"> 
+        <fieldset>
+            <!--input accepts Name, Min Customers/hr, Max Customers/hr
+            Avg Cookies per Customer-->
+            
+
+            <p> <label> Enter Location Name</label>
+                <input id = "newName" type="text" placeholder="New Location Name">
+            </p>
+             <p><label> Enter Min Customers per Hour </label>
+                <input id = "newMinCH" type="text" placeholder="Estimate Min Customers/Hr">
+            </p>
+            <p><label> Enter Max Customers per Hour </label>
+                <input id = "newMaxCH" type="text" placeholder="Estimate Max Customers/Hr">
+            </p>
+            <p><label> Enter Average Cookies per Customer </label>
+                <input id = "newAvgCPC" type="text" placeholder="Estimate Number Cookies/Customer">
+            </p>
+            <p><button id= "addButton" value = "submit">+ Add </button>
+            </p>
+        </fieldset>
+
+    </form>
     
 </body>
 

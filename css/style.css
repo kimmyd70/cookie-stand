@@ -1,6 +1,6 @@
 /* colors: dark salmon: #a7340b; light salmon: #a7350b4f
 background: ##f5e2be96; nav: wheat, hover #a7350b4f; text olive: #343326;
-san-serif font-family (data): Ariel, Helvetica ;
+san-serif font-family (data): Arial, Helvetica ;
 serif font-family (text): Georgia, 'Times New Roman', Times, serif;
 custom google font-family (highlights: 'Courgette', cursive;*/
 
@@ -197,6 +197,50 @@ font-weight: bolder;
     padding: 0px 50px;
 }
 
+legend{
+    font-style: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #343326;
+    background-color:#f5e2be96; 
+    font-weight: bolder;
+    z-index:100;
+    margin: 100px 0px -9px 125px;
+    width: fit-content;
+    font-size: 20px;
+}
+
+input[type='text'] {
+    width:260px;
+    height:40px;
+    font-size:12px;
+    padding-left: 10px;
+}
+
+#addLocation{
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    border: 2px solid wheat;
+    color: #a7340b;
+    margin: 0px 0px 0px 100px;
+    padding: 20px;
+    max-width: 28%;
+}
+
+#addButton{
+    font-family: Arial, Helvetica, sans-serif;
+    width:100px;
+    height:40px;
+    font-size:15px;
+    border-radius: 12%;
+    color: #343326;
+    background-color:wheat;
+}
+
+#addButton:hover{
+    color: wheat;
+    background-color: #a7340b;
+
+}
 
 /* #salesData {
   margin: 50px;
