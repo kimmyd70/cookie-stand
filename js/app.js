@@ -36,7 +36,7 @@ var tokyo = {
   avgCPC: 1.2,
   simCPHArray: [],
   total: 0,
-  
+
   //generate random number of CPH
   //Objects/Math/random (inclusive)
   randomCPH: function(){
@@ -101,6 +101,9 @@ var hoursArray = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00
 var locationArray = [];
 var hourTotalArray = [];
 
+//
+var addLocation = document.getElementById ('addLocation');
+
 //Object literal replaced with constructor
 //CPH = Customer Per Hour
 //CPC  = Cookie Per Customer
@@ -121,7 +124,6 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
 
   this.randomCPH = function(){
     var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
-    //console.log('random' + rdmNumber);
     return rdmNumber;
   };
 
@@ -159,13 +161,42 @@ new CookieStore('Dubai', 11, 38, 3.7);
 new CookieStore('Paris', 20, 38, 2.3);
 new CookieStore('Lima', 2, 16, 4.6);
 
+function handleAdd (event){
+  //prevent auto page reload//
+  event.preventDefault();
+  var newName = event.target.newName.value;
+  var newMinCH = event.target.newMinCH.value;
+  var newMaxCH = event.target.newMaxCH.value;
+  var newAvgCPC = event.target.newAvgCPC.value;
+
+  new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
+
+  //calculate for new stores//
+  locationArray[i].simulateCPH ();
+  locationArray[i].totalCookies();
+  locationArray[i].render();
+
+
+  //clear out console//
+  event.target.newName.value = null;
+  event.target.newMinCH.value = null;
+  event.target.newMaxCH.value = null;
+  event.target.newAvgCPC.value = null;
+}
+
+
+
+//Add a new location with event
+addLocation.addEventListener('submit',handleAdd);
+
+
+
 
 // calculate sim cookies per each hour using avgCPC and randomCPH
 // store in location.simCPHArray = simulated cookies per hour
 CookieStore.prototype.simulateCPH = function(){
   for (var i = 0; i < hoursArray.length; i ++){
     this.simCPHArray[i]= Math.round(this.randomCPH() * this.avgCPC);
-    console.log (' sim[i]' + this.simCPHArray[i]);
   }
   return this.simCPHArray;
 };
@@ -192,7 +223,6 @@ function simHourTotal(locationArray){
     }
     hourTotal = 0;
   }
-  //console.log ('hr totals' + hourTotalArray);
   return this.hourTotalArray;
 }
 
