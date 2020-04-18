@@ -197,6 +197,26 @@ font-weight: bolder;
     padding: 0px 50px;
 }
 
+legend{
+    color: #a7340b;
+    line-height: 2;
+    z-index:100;
+    margin: 100px 0px -12px 125px;
+}
+
+#newName, #newMinCH, #newMaxCH, #newAvgCPC{
+    width: 100px;
+}
+
+#addLocation{
+    display: block;
+    border: 2px solid wheat;
+    color: #a7340b;
+    margin: 0px 0px 0px 100px;
+    padding: 25px;
+    max-width: 40%;
+
+}
 
 /* #salesData {
   margin: 50px;

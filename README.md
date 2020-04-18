@@ -39,7 +39,8 @@ Salmon Cookies
 
     - Include all of the typical stuff that you’ll find on the home page of a business: **locations, hours, contact information, some text about how awesome the business is, etc.**
 
-    ## Lab 09--add a form
+    ## Lab 09--add a form (added to sales.html)
+    
     Today you will be adding a form to your existing cookie stand project so that you can add new locations to the table by simply inputting their information with the form.
 
     Create a new HTML form to accept the information for a new cookie stand. Be sure to utulize the <fieldset> tag to help you style it.
