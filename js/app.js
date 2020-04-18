@@ -161,28 +161,6 @@ new CookieStore('Dubai', 11, 38, 3.7);
 new CookieStore('Paris', 20, 38, 2.3);
 new CookieStore('Lima', 2, 16, 4.6);
 
-function handleAdd (event){
-  //prevent auto page reload//
-  event.preventDefault();
-  var newName = event.target.newName.value;
-  var newMinCH = event.target.newMinCH.value;
-  var newMaxCH = event.target.newMaxCH.value;
-  var newAvgCPC = event.target.newAvgCPC.value;
-
-  new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
-
-  //calculate for new stores//
-  locationArray[i].simulateCPH ();
-  locationArray[i].totalCookies();
-  locationArray[i].render();
-
-
-  //clear out console//
-  event.target.newName.value = null;
-  event.target.newMinCH.value = null;
-  event.target.newMaxCH.value = null;
-  event.target.newAvgCPC.value = null;
-}
 
 
 
@@ -231,14 +209,14 @@ function simHourTotal(locationArray){
 
 ///Header render; create row, cells, fill, append
 function headerRender () {
-//create row element for the location and append
+  //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append total cell to beginning
   var spEl = document.createElement('td');
   //spEl.textContent = '';
   //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
-
+  
   //create and fill one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
     var cellEl = document.createElement('td');
@@ -280,6 +258,36 @@ function footerRender() {
   parentEl.appendChild (rowEl);
 }
 
+function handleAdd (event){
+  //prevent auto page reload//
+  event.preventDefault();
+  var newName = event.target.newName.value;
+  var newMinCH = event.target.newMinCH.value;
+  var newMaxCH = event.target.newMaxCH.value;
+  var newAvgCPC = event.target.newAvgCPC.value;
+
+  new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
+
+  //clear out old footer
+//  parentEl.deleteRow(locationArray[i]);
+
+  //calculate for new stores//
+  locationArray[i].simulateCPH ();
+  locationArray[i].totalCookies();
+
+
+  //insert new location row
+  locationArray[i].render();
+
+  //display new footer
+  //footerRender();
+
+  //clear out console//
+  event.target.newName.value = null;
+  event.target.newMinCH.value = null;
+  event.target.newMaxCH.value = null;
+  event.target.newAvgCPC.value = null;
+}
 // Do The Thing
 /////////////// Output: Do all functions for each of the values in locationArray
 
@@ -293,4 +301,4 @@ for (var i = 0; i < locationArray.length; i ++ ){
 }
 simHourTotal(locationArray);
 footerRender();
-////////////////////////////
+///////////////////////////
