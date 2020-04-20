@@ -103,6 +103,8 @@ var hourTotalArray = [];
 
 //
 var addLocation = document.getElementById ('addLocation');
+var storeAddFlag = false;
+
 
 //Object literal replaced with constructor
 //CPH = Customer Per Hour
@@ -216,7 +218,7 @@ function headerRender () {
   //spEl.textContent = '';
   //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
-  
+
   //create and fill one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
     var cellEl = document.createElement('td');
@@ -233,7 +235,7 @@ function headerRender () {
 
 ///Footer render
 function footerRender() {
-  //create row element for the location and append
+//create row element for the location and append
   var rowEl = document.createElement('tr');
   //append empty cell to beginning
   var spaceEl = document.createElement('td');
@@ -268,19 +270,27 @@ function handleAdd (event){
 
   new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
 
-  //clear out old footer
-//  parentEl.deleteRow(locationArray[i]);
-
   //calculate for new stores//
   locationArray[i].simulateCPH ();
   locationArray[i].totalCookies();
 
+  storeAddFlag = true;
 
-  //insert new location row
+  //insert row
+  // Create an empty row and add it to the last position of the table:
+  var rowEl = parentEl.insertRow(i);
+  parentEl.appendChild(rowEl);
+
+  //fill row with new store data
+  //delete old footer
+  document.getElementById('salesData2').deleteRow(i);
   locationArray[i].render();
 
-  //display new footer
-  //footerRender();
+  //calculate hrly totals
+  simHourTotal(locationArray);
+
+  //render updated footer
+  footerRender();
 
   //clear out console//
   event.target.newName.value = null;
@@ -288,6 +298,7 @@ function handleAdd (event){
   event.target.newMaxCH.value = null;
   event.target.newAvgCPC.value = null;
 }
+
 // Do The Thing
 /////////////// Output: Do all functions for each of the values in locationArray
 
@@ -300,5 +311,10 @@ for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].render();
 }
 simHourTotal(locationArray);
-footerRender();
-///////////////////////////
+var last = footerRender();
+
+if (storeAddFlag === true){
+  document.getElementById('salesData2').deleteRow(last);
+}
+
+/////////////////////////////
