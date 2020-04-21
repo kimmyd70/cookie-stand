@@ -270,33 +270,38 @@ function handleAdd (event){
 
   new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
 
-  //calculate for new stores//
-  locationArray[i].simulateCPH ();
-  locationArray[i].totalCookies();
+  if ((newName !== '') && (newMinCH !=='') && (newMaxCH !=='') && (newAvgCPC !=='')){
+    //calculate for new stores//
+    locationArray[i].simulateCPH ();
+    locationArray[i].totalCookies();
 
-  storeAddFlag = true;
+    storeAddFlag = true;
 
-  //insert row
-  // Create an empty row and add it to the last position of the table:
-  var rowEl = parentEl.insertRow(i);
-  parentEl.appendChild(rowEl);
+    //insert row
+    // Create an empty row and add it to the last position of the table:
+    var rowEl = parentEl.insertRow(i);
+    parentEl.appendChild(rowEl);
 
-  //fill row with new store data
-  //delete old footer
-  document.getElementById('salesData2').deleteRow(i);
-  locationArray[i].render();
+    //fill row with new store data
+    //delete old footer
+    document.getElementById('salesData2').deleteRow(i);
+    locationArray[i].render();
 
-  //calculate hrly totals
-  simHourTotal(locationArray);
+    //calculate hrly totals
+    simHourTotal(locationArray);
 
-  //render updated footer
-  footerRender();
+    //render updated footer
+    footerRender();
 
-  //clear out console//
-  event.target.newName.value = null;
-  event.target.newMinCH.value = null;
-  event.target.newMaxCH.value = null;
-  event.target.newAvgCPC.value = null;
+    //clear out console//
+    event.target.newName.value = null;
+    event.target.newMinCH.value = null;
+    event.target.newMaxCH.value = null;
+    event.target.newAvgCPC.value = null;
+  }
+  else {
+    alert('Please enter values in all boxes');
+  }
 }
 
 // Do The Thing
