@@ -97,13 +97,13 @@ var lima = {
 //Global Variables
 var parentEl = document.getElementById('salesData2');
 var hoursArray = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00pm',
-  '1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
+'1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 var locationArray = [];
 var hourTotalArray = [];
 
 //
 var addLocation = document.getElementById ('addLocation');
-var storeAddFlag = false;
+var last = (locationArray.length - 1);
 
 
 //Object literal replaced with constructor
@@ -218,7 +218,7 @@ function headerRender () {
   //spEl.textContent = '';
   //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
-
+  
   //create and fill one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
     var cellEl = document.createElement('td');
@@ -235,14 +235,15 @@ function headerRender () {
 
 ///Footer render
 function footerRender() {
-//create row element for the location and append
+  
+  //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append empty cell to beginning
   var spaceEl = document.createElement('td');
   //spaceEl.textContent = '';
   spaceEl.textContent = 'Totals';
   rowEl.appendChild(spaceEl);
-
+  
   //create and fill cells one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
     var hrTotalEl = document.createElement('td');
@@ -250,13 +251,10 @@ function footerRender() {
     hrTotalEl.textContent = `${hourTotalArray[i]}`;
     rowEl.appendChild (hrTotalEl);
   }
-
   //append blank to end of row
   var locTotalel = document.createElement('td');
   locTotalel.textContent = '';
   rowEl.appendChild(locTotalel);
-
-  //append row to the table
   parentEl.appendChild (rowEl);
 }
 
@@ -275,24 +273,6 @@ function handleAdd (event){
     locationArray[i].simulateCPH ();
     locationArray[i].totalCookies();
 
-    storeAddFlag = true;
-
-    //insert row
-    // Create an empty row and add it to the last position of the table:
-    var rowEl = parentEl.insertRow(i);
-    parentEl.appendChild(rowEl);
-
-    //fill row with new store data
-    //delete old footer
-    document.getElementById('salesData2').deleteRow(i);
-    locationArray[i].render();
-
-    //calculate hrly totals
-    simHourTotal(locationArray);
-
-    //render updated footer
-    footerRender();
-
     //clear out console//
     event.target.newName.value = null;
     event.target.newMinCH.value = null;
@@ -300,10 +280,31 @@ function handleAdd (event){
     event.target.newAvgCPC.value = null;
   }
   else {
+    //conditional validates for non-null answers
     alert('Please enter values in all boxes');
   }
+  newRender();
 }
 
+//re-render after handler event
+function newRender(){
+  //delete old footer
+  parentEl.deleteRow(last);
+
+  //insert row
+  // Create an empty row and add it to the last position of the table:
+  var rowEl = parentEl.insertRow(i);
+  parentEl.appendChild(rowEl);
+
+  //fill row with new store data
+  locationArray[i].render();
+
+  //calculate hrly totals
+  simHourTotal(locationArray);
+
+  //render updated footer
+  footerRender();
+}
 // Do The Thing
 /////////////// Output: Do all functions for each of the values in locationArray
 
@@ -316,10 +317,8 @@ for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].render();
 }
 simHourTotal(locationArray);
-var last = footerRender();
 
-if (storeAddFlag === true){
-  document.getElementById('salesData2').deleteRow(last);
-}
+
+footerRender();
 
 /////////////////////////////
