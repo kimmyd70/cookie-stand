@@ -1,157 +1,63 @@
-/* //Lab 07
-X-build objects with constructors
-
--calculate daily total for each location and show at location row end
-
-format output data into a table
-    - each location uses a separate method (rename: render)
-    - header and footer created in stand-alone (prototype) functions
-    - put in CSS proper spacing and gridlines (css reset wipes them out)
- */
-
-/////////////////////////////////////////////
-
-
-/*var seattle = {
-  name: 'Seattle',
-  minCPH: 23,
-  maxCPH: 65,
-  avgCPC: 6.3,
-  simCPHArray: [],
-  total: 0,
-
-  //generate random number of CPH
-  //Objects/Math/random (inclusive)
-  randomCPH: function(){
-    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
-    console.log('random' + rdmNumber);
-    return rdmNumber;
-  },
-};
-
-var tokyo = {
-  name: 'Tokyo',
-  minCPH: 3,
-  maxCPH: 24,
-  avgCPC: 1.2,
-  simCPHArray: [],
-  total: 0,
-
-  //generate random number of CPH
-  //Objects/Math/random (inclusive)
-  randomCPH: function(){
-    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
-    console.log('random' + rdmNumber);
-    return rdmNumber;
-  },
-};
-
-var dubai = {
-  name: 'Dubai',
-  minCPH: 11,
-  maxCPH: 38,
-  avgCPC: 3.7,
-  simCPHArray: [],
-  total: 0,
-
-  //generate random number of CPH
-  //Objects/Math/random (inclusive)
-  randomCPH: function(){
-    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
-    console.log('random' + rdmNumber);
-    return rdmNumber;
-  },
-};
-
-var paris = {
-  name: 'Paris',
-  minCPH: 20,
-  maxCPH: 38,
-  avgCPC: 2.3,
-  simCPHArray: [],
-  total: 0,
-
-  //generate random number of CPH
-  //Objects/Math/random (inclusive)
-  randomCPH: function(){
-    var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
-    console.log('random' + rdmNumber);
-    return rdmNumber;
-  },
-};
-
-var lima = {
-  name: 'Lima',
-  minCPH: 2,
-  maxCPH: 16,
-  avgCPC: 4.6,
-  simCPHArray: [],
-  total: 0,
-
-
-};
-*/
-
-//////////////////////////////////////////////
-
 //Global Variables
-var parentEl = document.getElementById('salesData2');
 var hoursArray = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00pm',
 '1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 var locationArray = [];
 var hourTotalArray = [];
 
-//
-var addLocation = document.getElementById ('addLocation');
+var addLocation = document.getElementById ('addLocation'); //reference the form
 var last = (locationArray.length - 1);
 
+var table = document.getElementById('salesData2'); //reference the table
+var tableHeader = document.getElementsByTagName('thead')[0];
+var tableRows = document.getElementsByTagName('tbody')[0];
+var tableFooter = document.getElementsByTagName('tfoot')[0];
 
 //Object literal replaced with constructor
 //CPH = Customer Per Hour
 //CPC  = Cookie Per Customer
 
 function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal = 0){
-
+  
   this.name = name;
   this.minCPH = minCPH;
   this.maxCPH = maxCPH;
   this.avgCPC = avgCPC;
   this.simCPHArray = simCPHArray;
   this.dailyTotal = dailyTotal;
-
+  
   locationArray.push(this);
-
+  
   //generate random number of CPH
   //Objects/Math/random (inclusive)
-
+  
   this.randomCPH = function(){
     var rdmNumber = Math.floor(Math.random() * (this.maxCPH - this.minCPH + 1)) + this.minCPH;
     return rdmNumber;
   };
-
+  
   this.render = function(){
     //create row element for the location and append
     var rowEl = document.createElement('tr');
-
+    
     //create and fill title cell; append to row
     var titleEl = document.createElement('td');
     titleEl.textContent = `${this.name}`;
     rowEl.appendChild (titleEl);
-
+    
     //create and fill cells for each row length of 14 = #hours and append
     for (var i = 0; i < hoursArray.length; i ++ ){
       var cellEl = document.createElement('td');
       cellEl.textContent = `${this.simCPHArray[i]}`;
       rowEl.appendChild (cellEl);
     }
-
+    
     //create and fill total at the end of row; append to row
     var totalEl = document.createElement('td');
     totalEl.textContent = `${this.dailyTotal}`;
     rowEl.appendChild (totalEl);
-
+    
     //append row to the table
-    parentEl.appendChild (rowEl);
+    table.appendChild (rowEl);
   };
 }
 
@@ -214,23 +120,23 @@ function headerRender () {
   //create row element for the location and append
   var rowEl = document.createElement('tr');
   //append total cell to beginning
-  var spEl = document.createElement('td');
+  var spEl = document.createElement('th');
   //spEl.textContent = '';
   //spEl.textContent = 'BLANK';
   rowEl.appendChild(spEl);
   
   //create and fill one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
-    var cellEl = document.createElement('td');
+    var cellEl = document.createElement('th');
     cellEl.textContent = `${hoursArray[i]}`;
     rowEl.appendChild (cellEl);
   }
   // add total to end of row
-  var locTotalel = document.createElement('td');
+  var locTotalel = document.createElement('th');
   locTotalel.textContent = 'Daily Location Total';
   rowEl.appendChild(locTotalel);
   //append row to the table
-  parentEl.appendChild (rowEl);
+  table.appendChild (rowEl);
 }
 
 ///Footer render
@@ -251,11 +157,16 @@ function footerRender() {
     hrTotalEl.textContent = `${hourTotalArray[i]}`;
     rowEl.appendChild (hrTotalEl);
   }
-  //append blank to end of row
-  var locTotalel = document.createElement('td');
-  locTotalel.textContent = '';
-  rowEl.appendChild(locTotalel);
-  parentEl.appendChild (rowEl);
+  //append grand total to end of row
+  var grandTotalel = document.createElement('td');
+  var grandTotalSum = 0;
+  grandTotalel.textContent = '';
+  for (var g = 0; g < hoursArray.length; g++){
+    grandTotalSum += hourTotalArray[g];
+  }
+  grandTotalel.textContent = parseInt(grandTotalSum);
+  rowEl.appendChild(grandTotalel);
+  table.appendChild (rowEl);
 }
 
 function handleAdd (event){
@@ -268,33 +179,28 @@ function handleAdd (event){
 
   new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
 
-  if ((newName !== '') && (newMinCH !=='') && (newMaxCH !=='') && (newAvgCPC !=='')){
-    //calculate for new stores//
-    locationArray[i].simulateCPH ();
-    locationArray[i].totalCookies();
+  //calculate for new stores//
+  locationArray[i].simulateCPH ();
+  locationArray[i].totalCookies();
 
-    //clear out console//
-    event.target.newName.value = null;
-    event.target.newMinCH.value = null;
-    event.target.newMaxCH.value = null;
-    event.target.newAvgCPC.value = null;
-  }
-  else {
-    //conditional validates for non-null answers
-    alert('Please enter values in all boxes');
-  }
+  //clear out console//
+  event.target.newName.value = null;
+  event.target.newMinCH.value = null;
+  event.target.newMaxCH.value = null;
+  event.target.newAvgCPC.value = null;
+
   newRender();
 }
 
 //re-render after handler event
 function newRender(){
   //delete old footer
-  parentEl.deleteRow(last);
+  table.deleteRow(last);
 
   //insert row
   // Create an empty row and add it to the last position of the table:
-  var rowEl = parentEl.insertRow(i);
-  parentEl.appendChild(rowEl);
+  var rowEl = table.insertRow(i);
+  table.appendChild(rowEl);
 
   //fill row with new store data
   locationArray[i].render();

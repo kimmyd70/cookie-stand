@@ -161,9 +161,10 @@ figcaption{
 
 }
 
-#salesData2 tr:first-child {
+#salesData2 th {
 height: 50px;
 border: none;
+padding: 7px;
 font-weight: bolder;
 }
 
@@ -171,7 +172,7 @@ font-weight: bolder;
     border: none;
 }
 
-#salesData2 tr:nth-child(2n) {
+#salesData2 tr:nth-child(2n +1) {
     background-color: wheat;
 }
 
@@ -210,9 +211,9 @@ legend{
 }
 
 input[type='text'] {
-    width:260px;
-    height:40px;
-    font-size:12px;
+    width:200px;
+    height:30px;
+    font-size:10px;
     padding-left: 10px;
 }
 
