@@ -1,21 +1,19 @@
 //Global Variables
-var parentEl = document.getElementById('salesData2');
 var hoursArray = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00pm',
-'1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
+  '1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 var locationArray = [];
 var hourTotalArray = [];
 
-//
-var addLocation = document.getElementById ('addLocation');
-var last = (locationArray.length - 1);
+var addLocation = document.getElementById ('addLocation'); //reference the form
+var last = (locationArray.length - 1); //for footer delete with event
 
+var table = document.getElementById('salesData2'); //reference the table
 
 //Object literal replaced with constructor
 //CPH = Customer Per Hour
 //CPC  = Cookie Per Customer
 
 function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal = 0){
-
   this.name = name;
   this.minCPH = minCPH;
   this.maxCPH = maxCPH;
@@ -55,7 +53,7 @@ function CookieStore (name, minCPH, maxCPH, avgCPC, simCPHArray= [], dailyTotal 
     rowEl.appendChild (totalEl);
 
     //append row to the table
-    parentEl.appendChild (rowEl);
+    table.appendChild (rowEl);
   };
 }
 
@@ -66,15 +64,6 @@ new CookieStore('Tokyo', 3, 24, 1.2);
 new CookieStore('Dubai', 11, 38, 3.7);
 new CookieStore('Paris', 20, 38, 2.3);
 new CookieStore('Lima', 2, 16, 4.6);
-
-
-
-
-//Add a new location with event
-addLocation.addEventListener('submit',handleAdd);
-
-
-
 
 // calculate sim cookies per each hour using avgCPC and randomCPH
 // store in location.simCPHArray = simulated cookies per hour
@@ -94,10 +83,7 @@ CookieStore.prototype.totalCookies = function (){
 };
 
 //calculates total cookies per hour from all stores
-
 //over one hour [j], loop to add from each this.simCPHArray
-
-
 function simHourTotal(locationArray){
   var hourTotal = 0;
   for (var j = 0; j < hoursArray.length; j++){
@@ -110,56 +96,57 @@ function simHourTotal(locationArray){
   return this.hourTotalArray;
 }
 
-///////////////Display each via DOM manipulation///////////
-
-
 ///Header render; create row, cells, fill, append
 function headerRender () {
   //create row element for the location and append
-  var rowEl = document.createElement('tr');
+  var tableHeader = document.createElement('tr');
   //append total cell to beginning
-  var spEl = document.createElement('td');
+  var spEl = document.createElement('th');
   //spEl.textContent = '';
   //spEl.textContent = 'BLANK';
-  rowEl.appendChild(spEl);
-  
+  tableHeader.appendChild(spEl);
+
   //create and fill one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
-    var cellEl = document.createElement('td');
+    var cellEl = document.createElement('th');
     cellEl.textContent = `${hoursArray[i]}`;
-    rowEl.appendChild (cellEl);
+    tableHeader.appendChild (cellEl);
   }
   // add total to end of row
-  var locTotalel = document.createElement('td');
+  var locTotalel = document.createElement('th');
   locTotalel.textContent = 'Daily Location Total';
-  rowEl.appendChild(locTotalel);
+  tableHeader.appendChild(locTotalel);
   //append row to the table
-  parentEl.appendChild (rowEl);
+  table.appendChild (tableHeader);
 }
 
 ///Footer render
 function footerRender() {
-  
   //create row element for the location and append
-  var rowEl = document.createElement('tr');
+  var tableFooter = document.createElement('tr');
   //append empty cell to beginning
   var spaceEl = document.createElement('td');
   //spaceEl.textContent = '';
   spaceEl.textContent = 'Totals';
-  rowEl.appendChild(spaceEl);
-  
+  tableFooter.appendChild(spaceEl);
+
   //create and fill cells one row length 14
   for (var i = 0; i < hoursArray.length; i ++ ){
     var hrTotalEl = document.createElement('td');
     //hrTotalEl.textContent = 'help';
     hrTotalEl.textContent = `${hourTotalArray[i]}`;
-    rowEl.appendChild (hrTotalEl);
+    tableFooter.appendChild (hrTotalEl);
   }
-  //append blank to end of row
-  var locTotalel = document.createElement('td');
-  locTotalel.textContent = '';
-  rowEl.appendChild(locTotalel);
-  parentEl.appendChild (rowEl);
+  //append grand total to end of row
+  var grandTotalel = document.createElement('td');
+  var grandTotalSum = 0;
+  grandTotalel.textContent = '';
+  for (var g = 0; g < hoursArray.length; g++){
+    grandTotalSum += hourTotalArray[g];
+  }
+  grandTotalel.textContent = parseInt(grandTotalSum);
+  tableFooter.appendChild(grandTotalel);
+  table.appendChild (tableFooter);
 }
 
 function handleAdd (event){
@@ -172,33 +159,29 @@ function handleAdd (event){
 
   new CookieStore(newName,newMinCH,newMaxCH,newAvgCPC);
 
-  if ((newName !== '') && (newMinCH !=='') && (newMaxCH !=='') && (newAvgCPC !=='')){
-    //calculate for new stores//
-    locationArray[i].simulateCPH ();
-    locationArray[i].totalCookies();
+  //calculate for new stores//
+  locationArray[i].simulateCPH ();
+  locationArray[i].totalCookies();
 
-    //clear out console//
-    event.target.newName.value = null;
-    event.target.newMinCH.value = null;
-    event.target.newMaxCH.value = null;
-    event.target.newAvgCPC.value = null;
-  }
-  else {
-    //conditional validates for non-null answers
-    alert('Please enter values in all boxes');
-  }
+  //render new info on screen
   newRender();
+
+  //clear out console//
+  event.target.newName.value = null;
+  event.target.newMinCH.value = null;
+  event.target.newMaxCH.value = null;
+  event.target.newAvgCPC.value = null;
 }
 
 //re-render after handler event
 function newRender(){
   //delete old footer
-  parentEl.deleteRow(last);
+  table.deleteRow(last);
 
   //insert row
   // Create an empty row and add it to the last position of the table:
-  var rowEl = parentEl.insertRow(i);
-  parentEl.appendChild(rowEl);
+  var rowEl = table.insertRow(i);
+  table.appendChild(rowEl);
 
   //fill row with new store data
   locationArray[i].render();
@@ -208,9 +191,10 @@ function newRender(){
 
   //render updated footer
   footerRender();
+
+  i++;
 }
-// Do The Thing
-/////////////// Output: Do all functions for each of the values in locationArray
+//////// Do The Thing
 
 //output header row
 headerRender();
@@ -221,8 +205,9 @@ for (var i = 0; i < locationArray.length; i ++ ){
   locationArray[i].render();
 }
 simHourTotal(locationArray);
-
-
 footerRender();
+
+//Add a new location with event
+addLocation.addEventListener('submit',handleAdd);
 
 /////////////////////////////

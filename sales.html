@@ -34,7 +34,9 @@
     </ul>-->
 
     <table id = "salesData2">
-        
+        <thead></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
     </table>
 
     <!--Help Pat add new locations to his sales data-->
@@ -47,16 +49,16 @@
             
 
             <p> <label> Enter Location Name</label>
-                <input id = "newName" type="text" placeholder="New Location Name">
+                <input id = "newName" type="text" placeholder="City" required>
             </p>
              <p><label> Enter Min Customers per Hour </label>
-                <input id = "newMinCH" type="text" placeholder="Estimate Min Customers/Hr">
+                <input id = "newMinCH" type="number" placeholder="integer" required>
             </p>
             <p><label> Enter Max Customers per Hour </label>
-                <input id = "newMaxCH" type="text" placeholder="Estimate Max Customers/Hr">
+                <input id = "newMaxCH" type="number" placeholder="integer" required>
             </p>
             <p><label> Enter Average Cookies per Customer </label>
-                <input id = "newAvgCPC" type="text" placeholder="Estimate Number Cookies/Customer">
+                <input id = "newAvgCPC" type="number" placeholder="one-place decimal" step = ".01" required>
             </p>
             <p><button id= "addButton" value = "submit">+ Add </button>
             </p>
