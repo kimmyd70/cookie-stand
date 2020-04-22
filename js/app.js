@@ -5,7 +5,7 @@ var locationArray = [];
 var hourTotalArray = [];
 
 var addLocation = document.getElementById ('addLocation'); //reference the form
-var last = (locationArray.length - 1);
+var last = (locationArray.length - 1); //for footer delete with event
 
 var table = document.getElementById('salesData2'); //reference the table
 
@@ -211,4 +211,3 @@ footerRender();
 addLocation.addEventListener('submit',handleAdd);
 
 /////////////////////////////
-
